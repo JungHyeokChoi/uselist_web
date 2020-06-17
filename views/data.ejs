@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table ,th, td {
+          border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1><%=db.name %> 수업은 <%=db.title %></h1><br><br> -->
+
+    <!-- <p>
+        <% for(var i = 0; i < db.length; i++){ %> 
+            <%= JSON.stringify(db[i])%><br>
+        <% } %>
+    </p>
+    <p>
+        <% for(var i = 0; i < db.length; i++){ %> 
+            <%= db[i].id %><br>
+            <%= db[i].title %><br>
+            <%= db[i].description %><br>
+            <%= db[i].author %><br><br>
+        <% } %>
+    </p> -->
+
+    <table style="width:50%">
+        <caption><h1>O2</h1></caption>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th style="text-align:center">title</th>
+            <th style="text-align:center">description</th>
+            <th style="text-align:center">author</th>
+          </tr>
+        </thead>
+        <% for(var i = 0; i < db.length; i++){ %> 
+        <tbody>
+          <tr>
+            <th><%= db[i].id %></th>
+            <td style="text-align:center"><%= db[i].title %></td>
+            <td style="text-align:center"><%= db[i].description %></td>
+            <td style="text-align:center"><%= db[i].author %></td>
+          </tr>
+        </tbody>
+        <% } %>
+        <tfoot>
+          <tr>
+            <td colspan="4" style="text-align:center"><h3>Result : Success</h3></td>
+          </tr>
+        </tfoot>
+      </table>
+</body>
+</html>
