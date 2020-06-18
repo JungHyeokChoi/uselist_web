@@ -66,13 +66,28 @@ router.post('/topic/:id/edit', (req, res) => {
 
 router.get('/topic/:id/delete', (req, res) => {
     var id = req.params.id
-    var sql = `DELETE FROM topic WHERE id=${id}`
-    db.query(sql, (err, result) => {
-        if(err){
-            console.log(err)
-            res.status(500).send("internal Server Error")
-        }
-        res.redirect(`/topic`)
+    db.query(`SELECT * FROM topic WHERE id=${id}`, (err,results) =>{
+        var title = results[0].title
+        var description = results[0].description
+        var author = results[0].author
+        
+        var sql_1 = `INSERT INTO deletelist (title, description, author) VALUES(?, ?, ?)`
+        var queryData = [title, description, author]
+        db.query(sql_1, queryData, (err,result_1) => {
+            if(err){
+                console.log(err)
+                res.status(500).send("internal Server Error")
+             }
+
+            var sql = `DELETE FROM topic WHERE id=${id}`
+            db.query(sql, (err, result) => {
+            if(err){
+                console.log(err)
+                res.status(500).send("internal Server Error")
+             }
+            res.redirect(`/topic`)
+            })
+        })
     })
 })
 

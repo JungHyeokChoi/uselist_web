@@ -59,16 +59,21 @@
                 <% } %>
         </table>
       </div>
+      <div class="container">
         <% if(topic){ %>
-            <h1><%= topic.title %></h1>
-            <p><%= topic.description %></p>
-            <p>by <%= topic.author %></p>
+            <table class="table table-bordered">
+                <tr><h1><%= topic.title %></h1></tr>
+                <tr><p><%= topic.description %></p></tr>
+                <tr><p>by <%= topic.author %></p></tr>
+            </table>
         <% } else { %>
-            <h1>Welcome</h1>
-            This is Server Side JavaScript Tutorial<br><br>
-            <a href="/topic/add"><button type="button" class="btn btn-outline-primary">추가</button></a>
+            <table class="table table-bordered">
+                <tr><h1>Welcome</h1></tr>
+                <tr>This is Server Side JavaScript Tutorial<br><br></tr>
+                <tr><a href="/topic/add"><button type="button" class="btn btn-outline-primary">추가</button></a></tr>
+            </table>
         <% } %>
-
+        </div>
 
         <script>
             function deleteConfirm(){
