@@ -39,6 +39,19 @@ router.post('/topic/add', (req, res) => {
     console.log(req.body)
 })
 
+router.get('/topic/edit/:id', (req, res) => {
+    var ids = req.params.id
+    var sql = `SELECT * FROM topic WHERE id = ${ids}`
+    db.query(sql, (err, result) => {
+        if(err){
+            console.log(err)
+            res.status(500).send("internal Server Error")
+        }
+        console.log(result)
+        res.render('edit', {topic : result[0]})
+    })
+})
+
 // params(:)
 router.get(['/topic','/topic/:id'], (req, res) => {
     var sql = `SELECT * FROM topic`
@@ -52,10 +65,13 @@ router.get(['/topic','/topic/:id'], (req, res) => {
                     console.log(err)
                     res.status(500).send("internal Server Error")
                 }
+
                 res.render('view', {
                     topics : results,
-                    topic : result
+                    topic : result[0]
                 })
+
+                console.log(result)
             })
         }
         else{

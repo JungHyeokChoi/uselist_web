@@ -27,7 +27,7 @@
             <p><%= topic.description %></p>
             <p>by <%= topic.author %></p>
             <a href="/topic/add"><button type="button" class="btn btn-outline-danger">삭제</button></a>
-            <a href="/topic/add"><button type="button" class="btn btn-outline-success">수정</button></a>
+            <a href="/topic/edit/<%= topic.id %>"><button type="button" class="btn btn-outline-success">수정</button></a>
         <% } else { %>
             <h2>Welcome</h2>
             This is Server Side JavaScript Tutorial<br>
