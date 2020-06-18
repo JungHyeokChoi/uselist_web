@@ -13,19 +13,29 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+    <style>
+        h1 {
+            margin: 30px;
+            text-align:center;
+        }
+        body {
+            margin:30px;
+        }
+    </style>
+
     <title>Edit</title>
 </head>
 <body>
-    <h1 style="text-align:center"> Server Side Javascript</h1>  
+    <a href="/topic"><h1> Server Side Javascript</h1></a>  
 
     <article>
-        <form action="/topic/<%= topic.id%>/edit" method="POST" name = "add" onsubmit="return confirm('수정하시겠습니까?')">
+        <form action="/topic/<%= topic.id%>/edit" method="POST" name = "edit" onsubmit="return confirm('수정하시겠습니까?')">
             <div class="form-group">
-                <label for="email">제목 : </label>
+                <label for="title">제목 : </label>
                 <input type="text" name="title"  class="form-control" value="<%= topic.title%>"><br>
-                <label for="comment">내용 : </label>
+                <label for="description">내용 : </label>
                 <textarea type="text" name="description" class="form-control" rows="5"><%= topic.description%></textarea><br>
-                <label for="email">글쓴이 : </label>
+                <label for="author">글쓴이 : </label>
                 <input type="text" name="author"  class="form-control" value="<%= topic.author%>"><br>
                 
                 <a href="/topic"><input type="submit" value = "수정" class="form-control btn-success"></a>

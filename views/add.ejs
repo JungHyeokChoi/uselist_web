@@ -15,50 +15,36 @@
 
     <title>게시판</title>
     <style>
-        table{
-          border: 1px solid black;
+        li{
           text-align:center;
+        }
+        h1 {
+            margin: 30px;
+            text-align:center;
+        }
+        body {
+            margin:30px;
         }
     </style>
 </head>
 <body>
     <article>
         <form action="/topic/add" method="POST" name = "add">
-            <table width="50%">
-                <tr>
-                    <td>
-                        <h1>Server Side Javascript</h1>      
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <% for(var i = 0; i < topics.length; i++){ %> 
-                            <li><%= topics[i].title %> &nbsp; : &nbsp; <%= topics[i].description %></li>
-                        <% } %>
-                    </td>
-                 </tr>
-                <tr>
-                    <td>
-                        <input type="text" name="title" placeholder="제목" style="width:98%">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <textarea type="text" name="description" placeholder="내용" cols="63%" rows= "10px"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="text" name="author" placeholder="글쓴이" style="width:98%">
-                     </td>
-                 </tr>
-                <tr>
-                    <td>
-                        <a href="/topic"><button type="button" class="btn btn-outline-info">Home</button></a>
-                    </td>
-                 </tr>
-            </table>
+            <div class="form-group">
+                <a href="/topic"><h1>Server Side Javascript</h1></a>      
+                 <% for(var i = 0; i < topics.length; i++){ %> 
+                     <li><%= topics[i].title %> &nbsp; : &nbsp; <%= topics[i].description %></li>
+                <% } %>
+                <br>
+                <label for="title">제목 : </label>
+                <input type="text" name="title" class="form-control" placeholder="제목" style="width: 100%"><br>
+                <label for="description">내용 : </label>
+                <textarea type="text" name="description" class="form-control" placeholder="내용" rows= "5px"></textarea><br>
+                <label for="author">글쓴이 : </label>
+                <input type="text" name="author" class="form-control" placeholder="글쓴이" style="width:100%"><br>
+                <a href="/topic"><input type="submit" value = "추가" class="form-control btn-outline-info"></a>
+            </div>
         </form>
     </article>
 </body>
-</html>
+</html

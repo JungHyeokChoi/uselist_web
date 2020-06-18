@@ -12,7 +12,6 @@ var sql_config = {
 var db = mysql.createConnection(sql_config)
 
 router.get('/topic/add', (req, res) => {
-
     var sql = "SELECT * FROM topic"
     db.query(sql, (err, result) => {
         if(err){
@@ -32,7 +31,7 @@ router.post('/topic/add', (req, res) => {
             res.status(500).send("internal Server Error")
         }
         console.log(result)
-        res.redirect('/topic/add')
+        res.redirect('/topic')
     })
 })
 
@@ -61,8 +60,19 @@ router.post('/topic/:id/edit', (req, res) => {
             console.log(err)
             res.status(500).send("internal Server Error")
         }
-        console.log(result)
         res.redirect(`/topic/${id}`)
+    })
+})
+
+router.get('/topic/:id/delete', (req, res) => {
+    var id = req.params.id
+    var sql = `DELETE FROM topic WHERE id=${id}`
+    db.query(sql, (err, result) => {
+        if(err){
+            console.log(err)
+            res.status(500).send("internal Server Error")
+        }
+        res.redirect(`/topic`)
     })
 })
 
