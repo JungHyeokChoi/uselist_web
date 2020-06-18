@@ -3,21 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
     <title>게시판</title>
+    <style>
+        table{
+          border: 1px solid black;
+          text-align:center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Server Side Javascript</h1>       
-    <ol>
-        <% for(var i = 0; i < topics.length; i++){ %> 
-            <li><%= topics[i].title %> &nbsp; : &nbsp; <%= topics[i].description %></li>
-        <% } %>
-    </ol>
     <article>
         <form action="/topic/add" method="POST" name = "add">
-            <input type="text" name="title" placeholder="제목" style="width:35%">
-            <textarea type="text" name="description" placeholder="내용" cols="45%" rows= "10px"></textarea>
-            <input type="text" name="author" placeholder="글쓴이" style="width:35%">
-            <input type="submit">
+            <table width="50%">
+                <tr>
+                    <td>
+                        <h1>Server Side Javascript</h1>      
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <% for(var i = 0; i < topics.length; i++){ %> 
+                            <li><%= topics[i].title %> &nbsp; : &nbsp; <%= topics[i].description %></li>
+                        <% } %>
+                    </td>
+                 </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="title" placeholder="제목" style="width:98%">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea type="text" name="description" placeholder="내용" cols="63%" rows= "10px"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="author" placeholder="글쓴이" style="width:98%">
+                     </td>
+                 </tr>
+                <tr>
+                    <td>
+                        <a href="/topic"><button type="button" class="btn btn-outline-info">Home</button></a>
+                    </td>
+                 </tr>
+            </table>
         </form>
     </article>
 </body>

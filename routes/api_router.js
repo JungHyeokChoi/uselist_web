@@ -39,6 +39,34 @@ router.post('/topic/add', (req, res) => {
     console.log(req.body)
 })
 
+// params(:)
+router.get(['/topic','/topic/:id'], (req, res) => {
+    var sql = `SELECT * FROM topic`
+    db.query(sql, (err,results) => {
+        var id = req.params.id
+        if(id){
+            // 'SELECT * FROM topic WHERE id=?'
+            var sql = `SELECT * FROM topic WHERE id=${id}`
+            db.query(sql, (err, result) => {
+                if(err){
+                    console.log(err)
+                    res.status(500).send("internal Server Error")
+                }
+                res.render('view', {
+                    topics : results,
+                    topic : result
+                })
+            })
+        }
+        else{
+            res.render('view', {
+                topics : results,
+                topic : undefined
+            })
+        }
+    })
+})
+
 router.get('/hello', (req, res) => {
     console.log("Hello World")
     console.log(req)
